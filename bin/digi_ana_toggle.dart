@@ -3,20 +3,17 @@ import 'dart:io';
 const inputSwitch = [
   0x3B, // SyncValue
   0x00, 0x01, // ProtocolVersion
-  0x00, 0x00, 0x00,
-  0x1C, // MessageSize: 28 (Header + Data incl., but excl. Sync)
-  0x01, // MsgType: Command response required message
-  0x00, 0x01, // messageCount = 1
-  0x00, 0x00, 0x00, 0x13, //commandSize = 19 (including the size field)
-  0x00, 0x00, 0x00,
-  0x1C, // Command handle = 28 (for relating answer from device, value of handle can be specified by the controller)
+  0x00, 0x00, 0x00, 0x1C, // MessageSize=28
+  0x01, // MessageType=1
+  0x00, 0x01, // MessageCount = 1
+  0x00, 0x00, 0x00, 0x13, // CommandSize=19
+  0x00, 0x00, 0x00, 0x1C, // Handle=28
   // address=0x12
-  0x10, 0x00, 0x82,
-  0x20, // Destination Ono 0x10008220 = Analog Input 1, channel A
-  0x00, 0x04, // Method ID: treeLevel = 4
-  0x00, 0x02, // Method ID: methodIndex = 2 = OcaSwitch::SET_POSITION
+  0x10, 0x00, 0x82, 0x20, // TargetONo=0x10008220 =Analog Input 1, channel A
+  0x00, 0x04, // MethodID: treeLevel=4
+  0x00, 0x02, //           methodIndex=2=OcaSwitch::SET_POSITION
   0x01, // parameterCount = 1
-//0x00, 0x00, // 0x0001 = Enable, 0x0000 = Disable
+  //0x00, 0x00, // 0x0001 = Enable, 0x0000 = Disable
 ];
 
 enum Channel { a, b, c, d }
